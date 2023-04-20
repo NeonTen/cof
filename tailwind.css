@@ -1,0 +1,47 @@
+@import "css/tailwind-extra";
+@import "css/animations";
+@import "css/woocommerce";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--color-primary: #FFDE00;
+		--color-secondary: #FF0404;
+		--color-gray: #6B7280;
+		--color-text: #000000;
+		--color-dark: var(--color-text);
+		--color-light: #f8f8f9;
+		--color-border: var(--color-gray);
+	}
+	[type='text'],
+	[type='email'],
+	[type='url'],
+	[type='password'],
+	[type='number'],
+	[type='date'],
+	[type='datetime-local'],
+	[type='month'],
+	[type='search'],
+	[type='tel'],
+	[type='time'],
+	[type='week'],
+	[multiple],
+	textarea,
+	select {
+		@apply w-full border-border-color focus:border-primary focus:outline-none focus:ring-primary placeholder:text-gray text-text-color py-2 px-4;
+	}
+	label {
+		@apply text-text-color;
+	}
+}
+@layer components {
+    .button {
+		@apply inline-flex justify-center items-center gap-3 bg-primary hover:bg-secondary transition ease-in text-text-color hover:text-white fill-text-color uppercase tracking-widest rounded-full px-10 py-3 min-w-fit;
+    }
+	/* .button svg {
+		@apply w-4;
+	} */
+}

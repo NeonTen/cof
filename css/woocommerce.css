@@ -1,0 +1,12 @@
+@import "wc/products.css";
+@import "wc/sidebar.css";
+@import "wc/single-product.css";
+@import "wc/components.css";
+@import "wc/cart.css";
+@import "wc/checkout.css";
+@import "wc/order.css";
+@import "wc/my-account.css";
+
+/* .woocommerce-page #sidebar {
+    @apply hidden;
+} */

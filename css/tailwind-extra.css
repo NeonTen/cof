@@ -1,0 +1,155 @@
+body {
+    font-family: 'Outfit', sans-serif;
+}
+a {
+    @apply transition-all ease-linear;
+}
+/* section {
+    @apply overflow-hidden;
+} */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply text-text-color;
+}
+p {
+    @apply text-gray text-lg;
+}
+
+.sub-menu::before {
+    @apply content-[''] bg-transparent w-full h-4 absolute -top-4 left-0;
+}
+.mobile-menu-wrapper .close,
+.mobile-menu-wrapper.menu-open .open {
+    @apply hidden;
+}
+.mobile-menu-wrapper.menu-open .close {
+    @apply block;
+}
+.slide-close {
+    @apply -mr-96;
+}
+
+/* Search box */
+.search-box {
+    @apply absolute inset-0 z-40 -translate-y-72;
+}
+.search-box-open {
+    @apply w-full translate-y-0;
+}
+
+/* Slider */
+.caption::after,
+.main-slider::before {
+    @apply content-[''] w-full bg-light-color absolute left-1/2 top-0 right-0 bottom-0 -z-10 hidden lg:block;
+}
+.main-slider::before {
+    @apply left-auto right-1/2;
+}
+
+.testimonial-slider .slick-slide {
+    @apply mx-4;
+}
+.testimonial-slider .slick-list {
+    @apply -mx-4 py-2 my-2;
+}
+
+/* Util */
+.plc {
+    @apply pl-6 4xl:pl-20 2xl:pl-16 lg:pl-10;
+}
+#sortbox:checked ~ #sortboxmenu {
+    @apply opacity-100 z-10;
+}
+#sortbox:checked + label svg {
+    @apply rotate-180 delay-75;
+}
+.slash::after {
+    @apply sm:content-['|'] last:sm:content-[''] sm:mx-2;
+}
+.slash:last-of-type:after {
+    @apply sm:content-[''] sm:mx-1;
+}
+.wysiwyg-editor {
+    @apply grid;
+}
+.wysiwyg-editor.white-bg,
+.wysiwyg-editor.white-bg h1,
+.wysiwyg-editor.white-bg h2,
+.wysiwyg-editor.white-bg h3,
+.wysiwyg-editor.white-bg h4,
+.wysiwyg-editor.white-bg h5,
+.wysiwyg-editor.white-bg h6,
+.wysiwyg-editor.white-bg p {
+    @apply text-white;
+}
+.wysiwyg-editor.white-bg h1,
+.wysiwyg-editor.white-bg h2,
+.wysiwyg-editor.white-bg h3,
+.wysiwyg-editor.white-bg h4,
+.wysiwyg-editor.white-bg h5,
+.wysiwyg-editor.white-bg h6 {
+    @apply mb-3;
+}
+.wysiwyg-editor h1,
+.wysiwyg-editor h2,
+.wysiwyg-editor h3,
+.wysiwyg-editor h4,
+.wysiwyg-editor h5,
+.wysiwyg-editor h6 {
+    @apply font-bold text-dark-color;
+}
+.wysiwyg-editor h1 {
+    @apply text-5xl;
+}
+.wysiwyg-editor h2 {
+    @apply text-4xl;
+}
+.wysiwyg-editor h3 {
+    @apply text-[32px];
+}
+.wysiwyg-editor h4 {
+    @apply text-2xl;
+}
+.wysiwyg-editor h5 {
+    @apply text-xl;
+}
+.wysiwyg-editor h6 {
+    @apply text-lg;
+}
+.wysiwyg-editor blockquote {
+    @apply font-medium italic border-l-8 border-primary pl-8 py-5;
+}
+.wysiwyg-editor ul,
+.wysiwyg-editor ol {
+    @apply text-lg font-semibold;
+}
+.wysiwyg-editor ul {
+    @apply list-none;
+}
+.wysiwyg-editor ol {
+    @apply list-decimal;
+}
+.wysiwyg-editor ul li,
+.wysiwyg-editor ol li {
+    @apply text-primary pl-4 my-3 leading-snug relative;
+}
+.wysiwyg-editor.exp ul,
+.wysiwyg-editor.exp ol {
+    @apply grid gap-2.5;
+}
+.wysiwyg-editor.exp ul li,
+.wysiwyg-editor.exp ol li {
+    @apply text-text-color font-medium relative my-0;
+}
+.wysiwyg-editor.exp ul li::before,
+.wysiwyg-editor.exp ol li::before {
+    @apply content-['#'] text-xs font-extrabold absolute left-0 top-1/2 -translate-y-1/2;
+}
+
+.copyrights a {
+    @apply hover:text-primary;
+}
