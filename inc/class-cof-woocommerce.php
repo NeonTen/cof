@@ -43,7 +43,9 @@ class COF_Woocommerce {
 		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
+		remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
 		add_action( 'woocommerce_after_shop_loop_item', [ $this, 'wc_price_cart_start' ], 10 );
+		add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_title', 15 );
 		add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_price', 20 );
 		// add_filter( 'woocommerce_after_shop_loop_item', [ $this, 'wc_custom_add_to_cart_text' ], 10 );
 		add_action( 'woocommerce_after_shop_loop_item', [ $this, 'wc_price_cart_end' ], 25 );
@@ -77,11 +79,11 @@ class COF_Woocommerce {
 		// Add ACF fields into shop page.
 		add_action( 'cof_before_footer', [ $this, 'shop_acf_fields' ] );
 
-		// Move positions of price and meta in single product.
-		// remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
-		// add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 10 );
-		// remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
-		// add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 20 );
+		// Size Chart.
+		add_filter( 'woocommerce_before_variations_form', [ $this, 'wc_size_chart' ] );
+
+		// New batch.
+		add_action( 'woocommerce_before_shop_loop_item_title', [ $this, 'wc_new_badge' ], 3 );
 
 	}
 
@@ -118,15 +120,6 @@ class COF_Woocommerce {
 	}
 
 	/**
-	 * Add Custom icon in Add to cart button
-	 */
-	public function wc_custom_add_to_cart_text() {
-		global $product;
-		$link = $product->get_permalink();
-		echo do_shortcode( '<a href="' . $link . '" class="button product_type_simple add_to_cart_button ajax_add_to_cart"><i class="far fa-shopping-cart"></i></a>' );
-	}
-
-	/**
 	 * Add div.
 	 */
 	public function wp_add_div() {
@@ -144,7 +137,7 @@ class COF_Woocommerce {
 	 * Wrap price and cart - start.
 	 */
 	public function wc_price_cart_start() {
-		echo '<div class="flex justify-between mt-2">';
+		echo '<div class="mt-2">';
 	}
 	/**
 	 * Wrap price and cart - end.
@@ -164,7 +157,7 @@ class COF_Woocommerce {
 	 * Remove sidebar from selecting pages.
 	 */
 	public function wc_remove_sidebar() {
-		if ( is_product() || is_cart() || is_checkout() || is_account_page() ) {
+		if ( is_product() || is_product_category() || is_cart() || is_checkout() || is_account_page() ) {
 			remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 			remove_action( 'woocommerce_after_main_content', 'woocommerce_get_sidebar', 10 );
 		}
@@ -194,6 +187,25 @@ class COF_Woocommerce {
 		$options['controlNav']   = false;
 
 		return $options;
+	}
+
+	/**
+	 * Add Size cart image
+	 */
+	public function wc_size_chart() {
+		$path = get_template_directory_uri();
+		?>
+		<a class="flex text-sm text-secondary underline mb-3" href="<?php echo $path . '/images/size-chart.jpg' ?>" target="_blank">Size Chart</a>
+		<?php
+	}
+
+	public function wc_new_badge() {
+		global $product;
+		$newness_days = 7;
+		$created = strtotime( $product->get_date_created() );
+		if ( ( time() - ( 60 * 60 * 24 * $newness_days ) ) < $created ) {
+		   echo '<span class="bg-secondary text-white text-xs uppercase tracking-widest px-2 py-1 absolute bottom-2 left-2">' . esc_html__( 'New!', 'cof' ) . '</span>';
+		}
 	}
 
 	/**

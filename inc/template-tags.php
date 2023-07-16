@@ -23,7 +23,7 @@ function theme_logo( $loc = '' ) {
 
 		printf(
 			'<a href="%s" class="navbar-brand">
-				<img class="w-full max-h-24 sm:max-h-36" src="%s">
+				<img class="w-full max-h-20 sm:max-h-24" src="%s">
 			</a>',
 			esc_url( get_home_url() ),
 			esc_url( $image_url )
@@ -238,7 +238,7 @@ function theme_header_html() {
 	<header class="site-header | w-full border-b border-black/5 relative">
 		<div class="container">
 
-			<div class="header-wrap | min-h-[155px] flex justify-between items-center relative z-30">
+			<div class="header-wrap | min-h-[120px] flex justify-between items-center relative z-30">
 
 				<div class="flex items-center gap-16">
 				<!-- Logo -->

@@ -31,7 +31,7 @@ module.exports = {
 			},
 			fontFamily: {
 				'handwritting': ['Meie Script', 'cursive'],
-				'awesome': ['"Font Awesome 5"'],
+				'awesome': ['"FontAwesome"'],
 			},
 			fontSize: {
 				'80': '5rem',

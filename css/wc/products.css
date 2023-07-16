@@ -19,17 +19,20 @@ ul.products.columns-5 {
 ul.products.columns-6 {
     @apply xl:grid-cols-3 2xl:grid-cols-6;
 }
+ul.products .woocommerce-loop-product__link {
+    @apply relative;
+}
 ul.products .woocommerce-loop-product__link img {
     @apply w-full;
 }
 .woocommerce-loop-product__title {
-    @apply text-xl 2xl:text-2xl uppercase tracking-widest mt-4 hover:text-secondary transition-all;
+    @apply text-lg 2xl:text-2xl uppercase tracking-widest mt-4 hover:text-secondary transition-all;
 }
 .button.product_type_simple {
     @apply text-3xl min-w-fit p-0 hover:bg-transparent text-text-color hover:text-text-color;
 }
 ul.products .price {
-    @apply text-lg text-gray;
+    @apply text-base text-gray;
 }
 ul.products .price del {
     @apply opacity-40;

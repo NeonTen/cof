@@ -172,7 +172,7 @@ function cof_scripts() {
 	wp_enqueue_script( 'cof-slick-js', $path . '/js/slick.min.js', [], $version, true );
 
 	// Fontawesome icons.
-	wp_enqueue_script( 'fontawesome5', '//kit.fontawesome.com/371f3e2957.js', [], $version, false );
+	wp_enqueue_script( 'fontawesome5', 'https://kit.fontawesome.com/371f3e2957.js', [], $version, false );
 
 	// Google fonts.
 	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Meie+Script&amp;family=Outfit:wght@400;700&amp;display=swap', false ); //phpcs:ignore
@@ -242,10 +242,10 @@ function add_theme_options() {
 	?>
 	<style>
 		/* :root {
-			--color-primary: <?php echo esc_html( $primary_color ); ?>;
-			--color-secondary: <?php echo esc_html( $secondary_color ); ?>;
-			--color-dark: <?php echo esc_html( $dark_color ); ?>;
-			--color-light: <?php echo esc_html( $light_color ); ?>;
+			--color-primary: <?php // echo esc_html( $primary_color ); ?>;
+			--color-secondary: <?php // echo esc_html( $secondary_color ); ?>;
+			--color-dark: <?php // echo esc_html( $dark_color ); ?>;
+			--color-light: <?php // echo esc_html( $light_color ); ?>;
 		} */
 	</style>
 	<?php
@@ -286,3 +286,35 @@ function remove_big_image_sizes() {
 	remove_image_size( '2048x2048' ); // 2 x Large (2048 x 2048)
 }
 add_action( 'init', 'remove_big_image_sizes' );
+
+/**
+ * Convert Flex slider into Thumbnail Slider
+ */
+function woo_flexslider_thumbnail( $options ) {
+    $options['controlNav'] = 'thumbnails';
+    return $options;
+}
+add_filter( 'woocommerce_single_product_carousel_options', 'woo_flexslider_thumbnail' );
+
+function my_custom_discount_percentage_sale_badge( $html, $post, $product ) {
+	if( $product->is_type('variable')){
+		$percentages = array();
+
+		$prices = $product->get_variation_prices();
+	
+		foreach( $prices['price'] as $key => $price ){
+			if( $prices['regular_price'][$key] !== $price ){
+				$percentages[] = round(100 - ($prices['sale_price'][$key] / $prices['regular_price'][$key] * 100));
+			}
+		}
+		$percentage = round(max($percentages)) . '%';
+		} else {
+			$regular_price = (float) $product->get_regular_price();
+			$sale_price    = (float) $product->get_sale_price();
+		
+			$percentage    = round(100 - ($sale_price / $regular_price * 100)) . '%';
+		}
+		return '<span class="onsale">' . $percentage . esc_html__( ' off', 'woocommerce' ) . '</span>';
+	}
+  
+add_filter( 'woocommerce_sale_flash', 'my_custom_discount_percentage_sale_badge', 20, 3 );

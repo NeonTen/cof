@@ -17,7 +17,7 @@
     @apply block top-16 right-0 translate-x-1/2;
 }
 .site-header-cart:hover .widget_shopping_cart::before {
-    @apply content-[''] w-full h-8 bg-transparent absolute left-0 right-0 -top-8 z-30;
+    @apply content-[''] w-full h-10 bg-transparent absolute left-0 right-0 -top-10 z-30;
 }
 
 .widget_shopping_cart_content {
@@ -46,7 +46,7 @@
     @apply mt-4;
 }
 .widget_shopping_cart_content .woocommerce-mini-cart__buttons .button {
-    @apply w-full;
+    @apply w-full text-sm;
 }
 .widget_shopping_cart_content .woocommerce-mini-cart__buttons .button + .button {
     @apply mt-2;

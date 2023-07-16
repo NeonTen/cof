@@ -23,41 +23,26 @@ class COF_Actions {
 	 * Hooks and Filters.
 	 */
 	public function hooks() {
-		// add_action( 'cof_after_header', [ $this, 'get_after_header' ], 10 );
+		add_action( 'cof_before_header', [ $this, 'get_before_header' ], 10 );
 	}
 
 	/**
-	 * Prints HTML of title section after header.
+	 * Prints HTML of notification section before header.
 	 */
-	public function get_after_header() {
-		if ( is_front_page() || ( is_post_type_archive( 'testimonials' ) || is_singular( 'testimonials' ) ) || has_post_parent() ) {
+	public function get_before_header() {
+		$notification = get_field( 'notification', 'option' );
+		if ( ! $notification ) {
 			return;
 		}
-
 		?>
-		<section class="w-full bg-gradient-to-r from-blue-dark to-blue-medium text-white py-8">
+		<section class="w-full bg-secondary text-center py-2">
 			<div class="container">
-				<h1 class="text-4xl font-bold">
-					<?php $this->get_custom_title(); ?>
-				</h1>
+				<h6 class="text-lg text-white">
+					<?php echo wp_kses_post( $notification ); ?>
+				</h6>
 			</div>
 		</section>
 		<?php
-	}
-
-	/**
-	 * Get titles according to pages.
-	 */
-	public function get_custom_title() {
-
-		$output = wp_kses_post( get_the_title( get_the_id() ) );
-
-		if ( is_archive() ) {
-			$output = get_the_archive_title();
-		}
-		if ( is_page() ) {
-			$output = wp_kses_post( get_the_title( get_the_id() ) );
-		}
 	}
 
 }

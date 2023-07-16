@@ -39,7 +39,7 @@ if ( ! $testimonials ) {
 		$image_html       = '';
 
 		if ( $featured_img_url ) {
-			$image_html = '<img class="w-20 h-20 object-cover" src="' . $featured_img_url . '">';
+			$image_html = '<img class="w-20 h-20 object-cover rounded-full" src="' . $featured_img_url . '">';
 		}
 		?>
 
@@ -48,14 +48,14 @@ if ( ! $testimonials ) {
 			<?php
 			printf(
 				'<div class="flex items-center gap-6 mb-4">
-					<img class="w-20 h-20 object-cover rounded-full" src="%1$s" alt="%2$s pic">
+					%1$s
 					<div>
 						<h4 class="text-lg font-bold">%2$s</h4>
-						<span class="flex">%3$s%3$s%3$s%3$s%3$s</span>
+						<span class="flex fill-primary">%3$s%3$s%3$s%3$s%3$s</span>
 					</div>
 				</div>
 				<p>%4$s</p>',
-				esc_url( $featured_img_url ),
+				wp_kses_post( $image_html ),
 				wp_kses_post( get_the_title() ),
 				get_svg( 'icons/star', false ), // phpcs:ignore
 				html_entity_decode( wp_trim_words( htmlentities( wpautop( get_the_content() ) ), 36, '...' ) ) // phpcs:ignore

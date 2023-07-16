@@ -60,7 +60,7 @@ p {
 .caption::after,
 .main-slider::before {
     position: absolute;
-    left: 50%;
+    left: 35%;
     top: 0px;
     right: 0px;
     bottom: 0px;
@@ -75,6 +75,18 @@ p {
     .caption::after,
 .main-slider::before {
         display: block;
+    }
+}
+@media (min-width: 1600px) {
+    .caption::after,
+.main-slider::before {
+        left: 45%;
+    }
+}
+@media (min-width: 1820px) {
+    .caption::after,
+.main-slider::before {
+        left: 50%;
     }
 }
 .main-slider::before {
@@ -221,33 +233,7 @@ p {
     margin-bottom: 0.75rem;
     padding-left: 1rem;
     line-height: 1.375;
-    color: var(--color-primary);
-}
-.wysiwyg-editor.exp ul,
-.wysiwyg-editor.exp ol {
-    display: grid;
-    gap: 0.625rem;
-}
-.wysiwyg-editor.exp ul li,
-.wysiwyg-editor.exp ol li {
-    position: relative;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-weight: 500;
     color: var(--color-text);
-}
-.wysiwyg-editor.exp ul li::before,
-.wysiwyg-editor.exp ol li::before {
-    position: absolute;
-    left: 0px;
-    top: 50%;
-    --tw-translate-y: -50%;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    font-size: 0.75rem;
-    line-height: 1rem;
-    font-weight: 800;
-    --tw-content: '#';
-    content: var(--tw-content);
 }
 .copyrights a:hover {
     color: var(--color-primary);
@@ -380,12 +366,15 @@ ul.products li:hover {
         grid-template-columns: repeat(6, minmax(0, 1fr));
     }
 }
+ul.products .woocommerce-loop-product__link {
+    position: relative;
+}
 ul.products .woocommerce-loop-product__link img {
     width: 100%;
 }
 .woocommerce-loop-product__title {
     margin-top: 1rem;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     line-height: 1.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -415,8 +404,8 @@ ul.products .woocommerce-loop-product__link img {
     color: var(--color-text);
 }
 ul.products .price {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
     color: var(--color-gray);
 }
 ul.products .price del {
@@ -539,13 +528,18 @@ ul.products li.product-category img {
     padding-right: 0.5rem;
     padding-top: 1px;
     padding-bottom: 1px;
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 .woocommerce-product-gallery {
     position: relative;
+}
+.woocommerce-product-gallery .flex-viewport {
+    border-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: rgb(212 212 212 / var(--tw-border-opacity));
 }
 .woocommerce-product-gallery__wrapper img {
     height: 100%;
@@ -800,19 +794,49 @@ a.flex-prev {
 a.flex-next::after,
 a.flex-prev::before {
     visibility: visible;
-    font-family: "Font Awesome 5";
+    background-color: var(--color-primary);
+    padding: 0.75rem;
+    font-family: "FontAwesome";
     font-size: 1.875rem;
     line-height: 2.25rem;
-    --tw-content: '\f138';
+    --tw-content: '\f105';
     content: var(--tw-content);
 }
 a.flex-prev::before {
-    --tw-content: '\f137';
+    --tw-content: '\f104';
     content: var(--tw-content);
 }
 ul.flex-direction-nav li a {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
+	/* @apply text-white; */
+}
+/* Product Slide Thumbnails */
+.flex-control-nav.flex-control-thumbs {
+    display: flex;
+}
+.flex-control-nav.flex-control-thumbs li {
+    flex: 1 1 0%;
+}
+.flex-control-nav.flex-control-thumbs img {
+    width: 130px;
+    border-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: rgb(212 212 212 / var(--tw-border-opacity));
+}
+.woocommerce-products-header__title.page-title {
+    margin-bottom: 2.5rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+@media (min-width: 768px) {
+    .woocommerce-products-header__title.page-title {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+    }
+}
+.wysiwyg-editor ul li.product-category.product {
+    margin: 0px;
 }
 /* Header cart */
 .site-header-cart {
@@ -850,9 +874,9 @@ ul.flex-direction-nav li a {
     position: absolute;
     left: 0px;
     right: 0px;
-    top: -2rem;
+    top: -2.5rem;
     z-index: 30;
-    height: 2rem;
+    height: 2.5rem;
     width: 100%;
     background-color: transparent;
     --tw-content: '';
@@ -912,6 +936,8 @@ ul.flex-direction-nav li a {
 }
 .widget_shopping_cart_content .woocommerce-mini-cart__buttons .button {
     width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }
 .widget_shopping_cart_content .woocommerce-mini-cart__buttons .button + .button {
     margin-top: 0.5rem;
@@ -1385,7 +1411,11 @@ form.woocommerce-checkout .required,
     height: 46px;
     width: 2rem;
 }
-.woocommerce-order-received {}
+.woocommerce-order-received h1 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 56rem;
+}
 .woocommerce-order {
     margin-left: auto;
     margin-right: auto;
@@ -1410,6 +1440,9 @@ form.woocommerce-checkout .required,
     --tw-bg-opacity: 1;
     background-color: rgb(245 245 245 / var(--tw-bg-opacity));
     padding: 1.5rem;
+}
+.woocommerce-order .woocommerce-order-overview li {
+    color: var(--color-text);
 }
 .woocommerce-order .woocommerce-order-overview + p {
     margin-bottom: 1.5rem;
@@ -1442,6 +1475,20 @@ form.woocommerce-checkout .required,
     --tw-border-opacity: 1;
     border-color: rgb(212 212 212 / var(--tw-border-opacity));
     padding: 1.5rem;
+}
+.wysiwyg-editor ul.wc-item-meta li {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--color-text);
+}
+.woocommerce-customer-details .woocommerce-columns.woocommerce-columns--2 {
+    display: grid;
+    gap: 2rem;
+}
+@media (min-width: 1024px) {
+    .woocommerce-customer-details .woocommerce-columns.woocommerce-columns--2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 .woocommerce-account.logged-in .woocommerce {
     display: grid;
@@ -1559,7 +1606,8 @@ form.woocommerce-checkout .required,
 .woocommerce-account:not(.logged-in) .woocommerce {
     margin-left: auto;
     margin-right: auto;
-    max-width: 72rem;
+    width: 100%;
+    max-width: 64rem;
 }
 .woocommerce-account:not(.logged-in) .woocommerce #customer_login {
     display: grid;
@@ -2398,7 +2446,8 @@ label {
     border-color: transparent;
     background-color: currentColor;
 }
-.button {
+.button,
+	.wp-element-button {
     display: inline-flex;
     min-width: -moz-fit-content;
     min-width: fit-content;
@@ -2408,10 +2457,12 @@ label {
     border-radius: 9999px;
     background-color: var(--color-primary);
     fill: var(--color-text);
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--color-text);
@@ -2422,14 +2473,23 @@ label {
     transition-duration: 150ms;
     transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
-.button:hover {
+.button:hover,
+	.wp-element-button:hover {
     background-color: var(--color-secondary);
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-/* .button svg {
-		@apply w-4;
-	} */
+@media (min-width: 640px) {
+    .button,
+	.wp-element-button {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
 .visible {
     visibility: visible;
 }
@@ -2460,11 +2520,17 @@ label {
 .-left-4 {
     left: -1rem;
 }
+.-left-6 {
+    left: -1.5rem;
+}
 .-left-7 {
     left: -1.75rem;
 }
 .-right-2 {
     right: -0.5rem;
+}
+.-right-6 {
+    right: -1.5rem;
 }
 .-right-7 {
     right: -1.75rem;
@@ -2475,8 +2541,14 @@ label {
 .-top-\[108px\] {
     top: -108px;
 }
+.bottom-2 {
+    bottom: 0.5rem;
+}
 .bottom-8 {
     bottom: 2rem;
+}
+.left-2 {
+    left: 0.5rem;
 }
 .left-8 {
     left: 2rem;
@@ -2505,6 +2577,9 @@ label {
 .z-40 {
     z-index: 40;
 }
+.col-span-2 {
+    grid-column: span 2 / span 2;
+}
 .mx-auto {
     margin-left: auto;
     margin-right: auto;
@@ -2519,6 +2594,9 @@ label {
 .mb-14 {
     margin-bottom: 3.5rem;
 }
+.mb-3 {
+    margin-bottom: 0.75rem;
+}
 .mb-4 {
     margin-bottom: 1rem;
 }
@@ -2531,6 +2609,9 @@ label {
 .ml-2 {
     margin-left: 0.5rem;
 }
+.ml-auto {
+    margin-left: auto;
+}
 .mt-0 {
     margin-top: 0px;
 }
@@ -2540,9 +2621,6 @@ label {
 .mt-10 {
     margin-top: 2.5rem;
 }
-.mt-11 {
-    margin-top: 2.75rem;
-}
 .mt-16 {
     margin-top: 4rem;
 }
@@ -2551,6 +2629,9 @@ label {
 }
 .mt-20 {
     margin-top: 5rem;
+}
+.mt-3 {
+    margin-top: 0.75rem;
 }
 .mt-4 {
     margin-top: 1rem;
@@ -2609,8 +2690,8 @@ label {
 .h-10 {
     height: 2.5rem;
 }
-.h-14 {
-    height: 3.5rem;
+.h-11 {
+    height: 2.75rem;
 }
 .h-16 {
     height: 4rem;
@@ -2639,14 +2720,14 @@ label {
 .h-screen {
     height: 100vh;
 }
-.max-h-24 {
-    max-height: 6rem;
+.max-h-20 {
+    max-height: 5rem;
 }
-.max-h-\[850px\] {
-    max-height: 850px;
+.max-h-\[400px\] {
+    max-height: 400px;
 }
-.min-h-\[155px\] {
-    min-height: 155px;
+.min-h-\[120px\] {
+    min-height: 120px;
 }
 .min-h-\[258px\] {
     min-height: 258px;
@@ -2663,8 +2744,8 @@ label {
 .w-10 {
     width: 2.5rem;
 }
-.w-14 {
-    width: 3.5rem;
+.w-11 {
+    width: 2.75rem;
 }
 .w-16 {
     width: 4rem;
@@ -2853,6 +2934,9 @@ label {
     border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
     border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
+.overflow-hidden {
+    overflow: hidden;
+}
 .overflow-y-scroll {
     overflow-y: scroll;
 }
@@ -2917,6 +3001,10 @@ label {
     --tw-bg-opacity: 1;
     background-color: rgb(223 247 248 / var(--tw-bg-opacity));
 }
+.bg-black {
+    --tw-bg-opacity: 1;
+    background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
 .bg-black\/30 {
     background-color: rgb(0 0 0 / 0.3);
 }
@@ -2935,6 +3023,9 @@ label {
 .bg-primary {
     background-color: var(--color-primary);
 }
+.bg-secondary {
+    background-color: var(--color-secondary);
+}
 .bg-text-color {
     background-color: var(--color-text);
 }
@@ -2945,11 +3036,11 @@ label {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-.bg-white\/70 {
-    background-color: rgb(255 255 255 / 0.7);
+.bg-white\/40 {
+    background-color: rgb(255 255 255 / 0.4);
 }
-.bg-gradient-to-r {
-    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+.fill-primary {
+    fill: var(--color-primary);
 }
 .fill-white {
     fill: #fff;
@@ -3078,7 +3169,7 @@ label {
     text-align: center;
 }
 .font-awesome {
-    font-family: "Font Awesome 5";
+    font-family: "FontAwesome";
 }
 .font-handwritting {
     font-family: Meie Script, cursive;
@@ -3209,6 +3300,11 @@ label {
 }
 .outline {
     outline-style: solid;
+}
+.ring {
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 .blur {
     --tw-blur: blur(8px);
@@ -3359,8 +3455,8 @@ label {
     .sm\:hidden {
         display: none;
     }
-    .sm\:max-h-36 {
-        max-height: 9rem;
+    .sm\:max-h-24 {
+        max-height: 6rem;
     }
     .sm\:grid-cols-4 {
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -3378,13 +3474,21 @@ label {
         font-size: 1.5rem;
         line-height: 2rem;
     }
-    .sm\:text-3xl {
-        font-size: 1.875rem;
-        line-height: 2.25rem;
+    .sm\:text-4xl {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
     }
     .sm\:text-6xl {
         font-size: 3.75rem;
         line-height: 1;
+    }
+    .sm\:text-sm {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+    .sm\:text-xl {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
     }
 }
 @media (min-width: 768px) {
@@ -3451,8 +3555,8 @@ label {
     .lg\:grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .lg\:grid-cols-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    .lg\:grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
     .lg\:grid-cols-5 {
         grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -3474,8 +3578,8 @@ label {
     .xl\:col-span-5 {
         grid-column: span 5 / span 5;
     }
-    .xl\:ml-28 {
-        margin-left: 7rem;
+    .xl\:ml-\[50\%\] {
+        margin-left: 50%;
     }
     .xl\:block {
         display: block;
@@ -3486,17 +3590,17 @@ label {
     .xl\:hidden {
         display: none;
     }
-    .xl\:h-\[730px\] {
-        height: 730px;
+    .xl\:h-\[320px\] {
+        height: 320px;
     }
-    .xl\:h-\[850px\] {
-        height: 850px;
+    .xl\:h-\[400px\] {
+        height: 400px;
     }
-    .xl\:w-\[500px\] {
-        width: 500px;
+    .xl\:w-\[219px\] {
+        width: 219px;
     }
-    .xl\:w-\[576px\] {
-        width: 576px;
+    .xl\:w-\[271px\] {
+        width: 271px;
     }
     .xl\:grid-cols-12 {
         grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -3525,8 +3629,9 @@ label {
     .xl\:justify-items-stretch {
         justify-items: stretch;
     }
-    .xl\:p-20 {
-        padding: 5rem;
+    .xl\:px-20 {
+        padding-left: 5rem;
+        padding-right: 5rem;
     }
     .xl\:py-10 {
         padding-top: 2.5rem;
@@ -3536,11 +3641,8 @@ label {
         padding-top: 2rem;
         padding-bottom: 2rem;
     }
-    .xl\:text-80 {
-        font-size: 5rem;
-    }
-    .xl\:leading-none {
-        line-height: 1;
+    .xl\:leading-tight {
+        line-height: 1.25;
     }
     .xl\:shadow-custom {
         --tw-shadow: 2px 2px 15px rgba(0, 0, 0, 0.08);
@@ -3549,6 +3651,13 @@ label {
     }
 }
 @media (min-width: 1440px) {
+    .\32xl\:ml-\[60\%\] {
+        margin-left: 60%;
+    }
+    .\32xl\:text-2xl {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
     .\32xl\:text-\[40px\] {
         font-size: 40px;
     }
@@ -3557,12 +3666,21 @@ label {
     }
 }
 @media (min-width: 1600px) {
-    .\33xl\:text-3xl {
-        font-size: 1.875rem;
-        line-height: 2.25rem;
+    .\33xl\:ml-\[75\%\] {
+        margin-left: 75%;
+    }
+    .\33xl\:text-5xl {
+        font-size: 3rem;
+        line-height: 1;
+    }
+    .\33xl\:text-80 {
+        font-size: 5rem;
     }
 }
 @media (min-width: 1820px) {
+    .\34xl\:ml-\[90\%\] {
+        margin-left: 90%;
+    }
     .\34xl\:text-\[32px\] {
         font-size: 32px;
     }

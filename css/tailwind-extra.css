@@ -44,7 +44,7 @@ p {
 /* Slider */
 .caption::after,
 .main-slider::before {
-    @apply content-[''] w-full bg-light-color absolute left-1/2 top-0 right-0 bottom-0 -z-10 hidden lg:block;
+    @apply content-[''] w-full bg-light-color absolute left-[35%] 3xl:left-[45%] 4xl:left-[50%] top-0 right-0 bottom-0 -z-10 hidden lg:block;
 }
 .main-slider::before {
     @apply left-auto right-1/2;
@@ -135,19 +135,7 @@ p {
 }
 .wysiwyg-editor ul li,
 .wysiwyg-editor ol li {
-    @apply text-primary pl-4 my-3 leading-snug relative;
-}
-.wysiwyg-editor.exp ul,
-.wysiwyg-editor.exp ol {
-    @apply grid gap-2.5;
-}
-.wysiwyg-editor.exp ul li,
-.wysiwyg-editor.exp ol li {
-    @apply text-text-color font-medium relative my-0;
-}
-.wysiwyg-editor.exp ul li::before,
-.wysiwyg-editor.exp ol li::before {
-    @apply content-['#'] text-xs font-extrabold absolute left-0 top-1/2 -translate-y-1/2;
+    @apply text-text-color pl-4 my-3 leading-snug relative;
 }
 
 .copyrights a {

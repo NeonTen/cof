@@ -3,6 +3,28 @@
     "title": "Header Settings",
     "fields": [
         {
+            "key": "field_648f6813c495e",
+            "label": "Notification",
+            "name": "notification",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "acfe_textarea_code": 0,
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": "br"
+        },
+        {
             "key": "field_621cb26d079dd",
             "label": "Logo Image",
             "name": "",
@@ -40,7 +62,7 @@
         },
         {
             "key": "field_64366618c81c9",
-            "label": "Track Order",
+            "label": "Track Order URL",
             "name": "track_order",
             "aria-label": "",
             "type": "text",
@@ -85,5 +107,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1681286709
+    "modified": 1687120442
 }

@@ -32,8 +32,8 @@ function cof_woocommerce_setup() {
 			],
 		]
 	);
-	// add_theme_support( 'wc-product-gallery-zoom' );
-	// add_theme_support( 'wc-product-gallery-lightbox' );
+	add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-slider' );
 }
 add_action( 'after_setup_theme', 'cof_woocommerce_setup' );
@@ -78,7 +78,9 @@ add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
  */
 function cof_woocommerce_active_body_class( $classes ) {
 	$classes[] = 'woocommerce-active';
-
+	if ( is_product_category() ) {
+		$classes[] = 'woocommerce-category-page';
+	}
 	return $classes;
 }
 add_filter( 'body_class', 'cof_woocommerce_active_body_class' );
@@ -100,6 +102,14 @@ function cof_woocommerce_related_products_args( $args ) {
 	return $args;
 }
 add_filter( 'woocommerce_output_related_products_args', 'cof_woocommerce_related_products_args' );
+
+/**
+ * Update column in product category page
+ */
+function loop_columns() {
+	return is_product_category() ? 4 : 3; 
+}
+add_filter( 'loop_shop_columns', 'loop_columns', 20 );
 
 /**
  * Remove default WooCommerce wrapper.

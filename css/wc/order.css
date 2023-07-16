@@ -1,4 +1,6 @@
-.woocommerce-order-received {}
+.woocommerce-order-received h1 {
+    @apply max-w-4xl mx-auto;
+}
 
 .woocommerce-order {
     @apply max-w-4xl mx-auto;
@@ -9,6 +11,9 @@
 
 .woocommerce-order .woocommerce-order-overview {
     @apply bg-neutral-100 p-6 mb-10;
+}
+.woocommerce-order .woocommerce-order-overview li {
+    @apply text-text-color;
 }
 .woocommerce-order .woocommerce-order-overview + p {
     @apply border-l-4 border-green-500 pl-4 mb-6;
@@ -29,4 +34,11 @@
 }
 .woocommerce-customer-details {
     @apply border-2 border-neutral-300 mt-10 p-6;
+}
+.wysiwyg-editor ul.wc-item-meta li {
+    @apply text-text-color flex gap-2;
+}
+
+.woocommerce-customer-details .woocommerce-columns.woocommerce-columns--2 {
+    @apply grid gap-8 lg:grid-cols-2;
 }

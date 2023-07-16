@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying Team CPT.
+ * The template for displaying Search results.
  *
  * @package COF
  */
@@ -33,10 +33,15 @@ get_header();
 			// Load sub field value.
 			$thumbnail    = '';
 			$thumbnail_id = '';
+			$price        = '';
+
+			if ( is_woocommerce_activated() ) {
+				$price = $product->get_price_html();
+			}
 
 			if ( has_post_thumbnail() ) {
 				$thumbnail_id = get_post_thumbnail_id( get_the_id() );
-				$image        = df_resize( $thumbnail_id, '', 410, 255, true, true );
+				$image        = df_resize( $thumbnail_id, '', 424, false, true, true );
 
 				$thumbnail = sprintf(
 					'<a href="%s">
@@ -49,19 +54,19 @@ get_header();
 			}
 
 			printf(
-				'<div class="flex flex-col">
+				'<div class="grid">
 					%s
-					<div class="mt-11">
-					<h3 class="text-2xl 3xl:text-3xl font-bold text-blue-dark">
-						<a class="hover:text-blue-medium" href="%s">%s</a>
-					</h3>
-					<p class="mt-6">%s</p>
+					<div class="">
+						<h3 class="text-lg 2xl:text-2xl uppercase tracking-widest mt-4 hover:text-secondary transition-all">
+							<a class="" href="%s">%s</a>
+						</h3>
+						<p class="text-base mt-2">%s</p>
 					</div>
 				</div>',
 				$thumbnail, // phpcs:ignore
 				esc_url( get_permalink() ),
 				wp_kses_post( get_the_title() ),
-				wp_kses_post( wp_trim_words( apply_filters( 'the_content', get_the_content() ), 18 ) )
+				$price
 			);
 
 		endwhile;

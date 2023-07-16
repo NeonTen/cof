@@ -26,14 +26,23 @@
 <div id="page" class="main-content w-full max-w-full">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'cof' ); ?></a>
 
+	<?php
+	/**
+	 * Add content before header.
+	 *
+	 * @hooked get_before_header - 10
+	 * (outputs Notification with BG)
+	 */
+	do_action( 'cof_before_header' );
+	?>
+
 	<?php theme_header_html(); ?>
 
 	<?php
 	/**
 	 * Add content after header.
 	 *
-	 * @hooked get_page_featured_section - 10
-	 * (outputs Featured title with BG)
+	 * @hooked nothing yet.
 	 */
 	do_action( 'cof_after_header' );
 	?>

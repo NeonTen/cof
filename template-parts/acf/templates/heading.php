@@ -23,7 +23,7 @@ if ( ! $heading && ! $subheading && ! $btn ) {
 				echo '<div class="grid gap-2">';
 				// Heading.
 				if ( $heading ) {
-					echo '<h2 class="text-4xl font-bold">' . wp_kses_post( $heading ) . '</h2>';
+					echo '<h2 class="text-3xl sm:text-4xl font-bold">' . wp_kses_post( $heading ) . '</h2>';
 				}
 				// Sub Heading.
 				if ( $subheading ) {

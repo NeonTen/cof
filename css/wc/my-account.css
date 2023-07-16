@@ -45,7 +45,7 @@
 
 /* Login form */
 .woocommerce-account:not(.logged-in) .woocommerce {
-    @apply max-w-6xl mx-auto;
+    @apply w-full max-w-5xl mx-auto;
 }
 .woocommerce-account:not(.logged-in) .woocommerce #customer_login {
     @apply grid grid-cols-1 md:grid-cols-2 gap-10;
