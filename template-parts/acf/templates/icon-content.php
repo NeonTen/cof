@@ -13,7 +13,7 @@
 	<?php
 	if ( have_rows( 'add_content' ) ) :
 
-		echo '<div class="grid md:grid-cols-2 xl:grid-cols-4 justify-center items-center gap-8">';
+		echo '<div class="grid md:grid-cols-2 xl:grid-cols-4 justify-center items-start gap-8">';
 
 		// Loop through rows.
 		while ( have_rows( 'add_content' ) ) :
@@ -30,7 +30,7 @@
 			}
 
 			printf(
-				'<div class="grid justify-center gap-4">
+				'<div class="grid justify-center gap-4 text-center">
 					%s
 					<p>%s</p>
 				</div>',
